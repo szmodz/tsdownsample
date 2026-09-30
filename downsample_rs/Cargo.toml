@@ -8,7 +8,7 @@ license = "MIT"
 
 [dependencies]
 # TODO: perhaps use polars?
-argminmax = { version = "0.6.3", features = ["half"] }
+argminmax = { version = "0.6.3", default-features = false, features = ["float"] }
 half = { version = "2.7.1", default-features = false , features=["num-traits"], optional = true}
 num-traits = { version = "0.2.19", default-features = false }
 once_cell = "1.21"
@@ -19,6 +19,11 @@ rstest = { version = "0.26.1", default-features = false }
 rstest_reuse = { version = "0.7.0", default-features = false }
 criterion = "0.8.2"
 dev_utils = { path = "dev_utils" }
+
+[features]
+default = []
+
+half = ["dep:half", "argminmax/half"]
 
 [[bench]]
 name = "bench_m4"
